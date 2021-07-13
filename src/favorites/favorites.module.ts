@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthsModule } from '../auths/auths.module';
 import { FavoritesService } from './favorites.service';
 import { FavoritesController } from './favorites.controller';
 import { FavoritesRepository } from './favorites.repository';
@@ -21,14 +20,8 @@ import { TagsService } from '../tags/tags.service';
     TypeOrmModule.forFeature([ProductsRepository]),
     TypeOrmModule.forFeature([StoresRepository]),
     TypeOrmModule.forFeature([TagsRepository]),
-    AuthsModule,
   ],
   controllers: [FavoritesController],
-  providers: [
-    FavoritesService,  
-    ImagesService,
-    ProductsService,
-    TagsService,
-  ]
+  providers: [FavoritesService, ImagesService, ProductsService, TagsService],
 })
 export class FavoritesModule {}

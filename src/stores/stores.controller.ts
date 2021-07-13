@@ -87,6 +87,7 @@ export class StoresController {
     const cookie = req.cookies['jwt'];
 
     const data = await this.jwtService.verifyAsync(cookie);
+
     return this.storesService.findById({ id: data['id'] });
   }
 

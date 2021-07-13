@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthsModule } from 'src/auths/auths.module';
+
 import { ImagesRepository } from 'src/images/images.repository';
 import { ImagesService } from 'src/images/images.service';
 import { ProductsRepository } from 'src/products/products.repository';
@@ -19,14 +19,8 @@ import { CategoriesService } from './categories.service';
     TypeOrmModule.forFeature([ProductsRepository]),
     TypeOrmModule.forFeature([StoresRepository]),
     TypeOrmModule.forFeature([TagsRepository]),
-    AuthsModule,
   ],
   controllers: [CategoriesController],
-  providers: [
-    CategoriesService,
-    ImagesService,
-    ProductsService,
-    TagsService,
-  ]
+  providers: [CategoriesService, ImagesService, ProductsService, TagsService],
 })
 export class CategoriesModule {}

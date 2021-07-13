@@ -1,6 +1,6 @@
-import { EntityRepository, Repository } from "typeorm";
-import { UpdateUserDto } from "./dto/update-user.dto";
-import { UserEntity } from "./entities/user.entity";
+import { EntityRepository, Repository } from 'typeorm';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UserEntity } from './entities/user.entity';
 
 @EntityRepository(UserEntity)
 export class UsersRepository extends Repository<UserEntity> {

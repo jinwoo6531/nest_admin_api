@@ -1,7 +1,7 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class AffectedRows {
-  @ApiProperty({ description: '적용 데이터 개수'})
+  @ApiProperty({ description: '적용 데이터 개수' })
   rows: number;
 }
 

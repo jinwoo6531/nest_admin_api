@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsIn } from "class-validator";
 
-export class CreateAuthDto {
+export class CreateAuthType {
   @IsNotEmpty()
   @IsIn(['apple', 'kakao', 'naver'])
   platform_type: string;

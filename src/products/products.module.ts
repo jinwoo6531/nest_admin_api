@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthsModule } from '../auths/auths.module';
 import { ProductsController } from './products.controller';
 import { ProductsRepository } from './products.repository';
 import { ProductsService } from './products.service';
@@ -21,7 +20,6 @@ import { FavoritesRepository } from '../favorites/favorites.repository';
     TypeOrmModule.forFeature([ProductsRepository]),
     TypeOrmModule.forFeature([StoresRepository]),
     TypeOrmModule.forFeature([TagsRepository]),
-    AuthsModule,
   ],
   controllers: [ProductsController],
   providers: [ProductsService, FavoritesService, ImagesService, TagsService],

@@ -1,5 +1,11 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { AfterLoad, BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { ApiProperty } from '@nestjs/swagger';
+import {
+  AfterLoad,
+  BaseEntity,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'user' })
 export class UserEntity extends BaseEntity {
@@ -23,10 +29,18 @@ export class UserEntity extends BaseEntity {
   @Column('char', { length: 1, nullable: true })
   gender: string;
 
-  @Column('timestamp', { name: 'created_at', default: () => 'CURRENT_TIMESTAMP', select: false })
+  @Column('timestamp', {
+    name: 'created_at',
+    default: () => 'CURRENT_TIMESTAMP',
+    select: false,
+  })
   created_at: Date;
 
-  @Column('timestamp', { name: 'modified_at', default: () => 'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP', select: false })
+  @Column('timestamp', {
+    name: 'modified_at',
+    default: () => 'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+    select: false,
+  })
   modified_at: Date;
 
   @AfterLoad()
