@@ -17,7 +17,10 @@ export class ImagesService {
     private readonly imagesRepository: ImagesRepository,
   ) {}
 
-  async create(folder: string, file: Express.Multer.File): Promise<ImageEntity> {
+  async create(
+    folder: string,
+    file: Express.Multer.File,
+  ): Promise<ImageEntity> {
     const filename = `${folder}/${uuid()}${path.extname(file.originalname)}`;
     const size = await imageSize(file.buffer);
 
@@ -28,8 +31,8 @@ export class ImagesService {
       Bucket: this.config.get<string>('S3_BUCKET'),
       ContentType: file.mimetype,
       Key: filename,
-    }
-    
+    };
+
     const result = await s3.upload(params).promise();
     const createImageDto: CreateImageDto = {
       platform_key: result.Key,
@@ -37,7 +40,7 @@ export class ImagesService {
       width: size.width,
       height: size.height,
       size: file.size,
-    }
+    };
 
     return await this.imagesRepository.create(createImageDto);
   }
@@ -47,7 +50,7 @@ export class ImagesService {
     const params = {
       Bucket: this.config.get<string>('S3_BUCKET'),
       Key: image.platform_key,
-    }
+    };
     await s3.deleteObject(params).promise();
     await this.imagesRepository.remove(image);
   }
